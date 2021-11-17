@@ -14,6 +14,7 @@
 		88D3028F274332C10083E928 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88D3028E274332C10083E928 /* Assets.xcassets */; };
 		88D30292274332C20083E928 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88D30290274332C20083E928 /* LaunchScreen.storyboard */; };
 		88D3029B274333B70083E928 /* FaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D3029A274333B70083E928 /* FaceView.swift */; };
+		88D3029D274378D60083E928 /* FacialExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D3029C274378D60083E928 /* FacialExpression.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		88D30291274332C20083E928 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88D30293274332C20083E928 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88D3029A274333B70083E928 /* FaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceView.swift; sourceTree = "<group>"; };
+		88D3029C274378D60083E928 /* FacialExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacialExpression.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +60,11 @@
 		88D30284274332BF0083E928 /* FaceIt */ = {
 			isa = PBXGroup;
 			children = (
-				88D30299274332EA0083E928 /* Supporting Files */,
-				88D30289274332BF0083E928 /* FaceViewController.swift */,
 				88D3028B274332BF0083E928 /* Main.storyboard */,
 				88D3029A274333B70083E928 /* FaceView.swift */,
+				88D30289274332BF0083E928 /* FaceViewController.swift */,
+				88D3029C274378D60083E928 /* FacialExpression.swift */,
+				88D30299274332EA0083E928 /* Supporting Files */,
 				88D30293274332C20083E928 /* Info.plist */,
 			);
 			path = FaceIt;
@@ -151,6 +154,7 @@
 			files = (
 				88D3028A274332BF0083E928 /* FaceViewController.swift in Sources */,
 				88D30286274332BF0083E928 /* AppDelegate.swift in Sources */,
+				88D3029D274378D60083E928 /* FacialExpression.swift in Sources */,
 				88D30288274332BF0083E928 /* SceneDelegate.swift in Sources */,
 				88D3029B274333B70083E928 /* FaceView.swift in Sources */,
 			);
