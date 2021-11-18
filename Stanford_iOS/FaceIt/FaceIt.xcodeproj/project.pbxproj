@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		886DB3512744D05F00EA79FB /* EmotionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886DB3502744D05F00EA79FB /* EmotionsViewController.swift */; };
+		88B202F52745E42000D30F63 /* VCL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B202F42745E42000D30F63 /* VCL.swift */; };
 		88D30286274332BF0083E928 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D30285274332BF0083E928 /* AppDelegate.swift */; };
 		88D30288274332BF0083E928 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D30287274332BF0083E928 /* SceneDelegate.swift */; };
 		88D3028A274332BF0083E928 /* FaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D30289274332BF0083E928 /* FaceViewController.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		886DB3502744D05F00EA79FB /* EmotionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionsViewController.swift; sourceTree = "<group>"; };
+		88B202F42745E42000D30F63 /* VCL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCL.swift; sourceTree = "<group>"; };
 		88D30282274332BF0083E928 /* FaceIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88D30285274332BF0083E928 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88D30287274332BF0083E928 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +68,8 @@
 				88D3029A274333B70083E928 /* FaceView.swift */,
 				88D30289274332BF0083E928 /* FaceViewController.swift */,
 				88D3029C274378D60083E928 /* FacialExpression.swift */,
+				886DB3502744D05F00EA79FB /* EmotionsViewController.swift */,
+				88B202F42745E42000D30F63 /* VCL.swift */,
 				88D30299274332EA0083E928 /* Supporting Files */,
 				88D30293274332C20083E928 /* Info.plist */,
 			);
@@ -154,6 +160,8 @@
 			files = (
 				88D3028A274332BF0083E928 /* FaceViewController.swift in Sources */,
 				88D30286274332BF0083E928 /* AppDelegate.swift in Sources */,
+				886DB3512744D05F00EA79FB /* EmotionsViewController.swift in Sources */,
+				88B202F52745E42000D30F63 /* VCL.swift in Sources */,
 				88D3029D274378D60083E928 /* FacialExpression.swift in Sources */,
 				88D30288274332BF0083E928 /* SceneDelegate.swift in Sources */,
 				88D3029B274333B70083E928 /* FaceView.swift in Sources */,

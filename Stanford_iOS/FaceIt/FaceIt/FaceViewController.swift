@@ -9,13 +9,17 @@ import UIKit
 
 class FaceViewController: UIViewController {
     
+    let instance = getFaceMVCinstanceCount()
+    
     // 초기화중에 값을 설정하면 didSet이 call되지 않음
+    // Model
     var expression = FacialExpression(eyes: .Open, eyeBrows: .Normal, mouth: .Frown) {
         didSet {
             updateUI()
         }
     }
     
+    // View
     @IBOutlet weak var faceView: FaceView! {
         didSet {
             faceView.addGestureRecognizer(UIPinchGestureRecognizer(
@@ -48,7 +52,7 @@ class FaceViewController: UIViewController {
         }
     }
     
-    
+    // Gesture Handlers
     @objc func increaseHappiness() {
         expression.mouth = expression.mouth.happierMouth()
     }
@@ -72,13 +76,15 @@ class FaceViewController: UIViewController {
     ]
     
     private func updateUI() {
-        switch expression.eyes {
-        case .Open: faceView.eyesOpen = true
-        case .Closed: faceView.eyesOpen = false
-        case .Squinting: faceView.eyesOpen = false
+        if faceView != nil {
+            switch expression.eyes {
+            case .Open: faceView.eyesOpen = true
+            case .Closed: faceView.eyesOpen = false
+            case .Squinting: faceView.eyesOpen = false
+            }
+            faceView.mouthCurvature = mouthCurvatures[expression.mouth] ?? 0.0
+            faceView.eyeBrwoTilt = eyeBrowTilts[expression.eyeBrows] ?? 0.0
         }
-        faceView.mouthCurvature = mouthCurvatures[expression.mouth] ?? 0.0
-        faceView.eyeBrwoTilt = eyeBrowTilts[expression.eyeBrows] ?? 0.0
     }
 
 }
