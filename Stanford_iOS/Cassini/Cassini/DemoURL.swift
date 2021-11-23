@@ -8,10 +8,10 @@
 import Foundation
 
 struct DemoURL {
-    static let Stanford = "https://doz1futtg6626.cloudfront.net/images/2021/5/18/TW_Release.jpg?width=1024&mode=crop.png"
+    static let Stanford = "https://doz1futtg6626.cloudfront.net/images/2021/5/18/TW_Release.jpg?width=1024&mode=crop.pngp"
     
     static let NASA = [
-        "Cassini" : "http://www.jpl.nasa.gov/images/cassini/20090202/pia03883-full.jpg",
+        "Cassini" : "https://www.nasa.gov/sites/default/files/thumbnails/image/cassinifinale.jpg",
         "Earth" : "http://www.nasa.gov/sites/default/files/wave_earth_mosaic_3.jpg",
         "Saturn" : "http://www.nasa.gov/sites/default/files/saturn_collage.jpg"
     ]
