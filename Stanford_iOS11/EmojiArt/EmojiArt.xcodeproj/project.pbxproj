@@ -17,6 +17,7 @@
 		883BA94F274F29CC00182025 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883BA94E274F29CC00182025 /* Utilities.swift */; };
 		883BA951274F550C00182025 /* EmojiArtDocumentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883BA950274F550C00182025 /* EmojiArtDocumentTableViewController.swift */; };
 		8879390E274F693A00E91FEF /* EmojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8879390D274F693A00E91FEF /* EmojiCollectionViewCell.swift */; };
+		88E3850B2750785C007B5DC0 /* EmojiArtView+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E3850A2750785C007B5DC0 /* EmojiArtView+Gestures.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		883BA94E274F29CC00182025 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		883BA950274F550C00182025 /* EmojiArtDocumentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtDocumentTableViewController.swift; sourceTree = "<group>"; };
 		8879390D274F693A00E91FEF /* EmojiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewCell.swift; sourceTree = "<group>"; };
+		88E3850A2750785C007B5DC0 /* EmojiArtView+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EmojiArtView+Gestures.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				883BA94C274F25D900182025 /* EmojiArtView.swift */,
 				883BA94A274F253D00182025 /* EmojiArtViewController.swift */,
 				8879390D274F693A00E91FEF /* EmojiCollectionViewCell.swift */,
+				88E3850A2750785C007B5DC0 /* EmojiArtView+Gestures.swift */,
 				883BA94E274F29CC00182025 /* Utilities.swift */,
 				883BA943274F24D200182025 /* Info.plist */,
 				883BA949274F24FC00182025 /* Supporting Files */,
@@ -159,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8879390E274F693A00E91FEF /* EmojiCollectionViewCell.swift in Sources */,
+				88E3850B2750785C007B5DC0 /* EmojiArtView+Gestures.swift in Sources */,
 				883BA936274F24CF00182025 /* AppDelegate.swift in Sources */,
 				883BA951274F550C00182025 /* EmojiArtDocumentTableViewController.swift in Sources */,
 				883BA94B274F253D00182025 /* EmojiArtViewController.swift in Sources */,
@@ -321,6 +325,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -349,6 +354,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
