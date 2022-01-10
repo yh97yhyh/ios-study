@@ -79,6 +79,33 @@ class EmojiArtViewController: UIViewController, UIDropInteractionDelegate, UIScr
         return UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.preferredFont(forTextStyle: .body).withSize(48))
     }
     
+    
+    //
+//    private var addingEmoji = false
+//
+//    @IBAction func addEmoji(_ sender: UIButton) {
+//        addingEmoji = true
+//        emojiCollectionView.reloadSections(IndexSet(integer: 0))
+//    }
+//
+//    // MARK: - UICollectionViewDataSource
+//
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 2
+//    }
+//
+//
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        switch section {
+//        case 0: return 1
+//        case 1: return emojis.count
+//        default: return 0
+//        }
+//    }
+//
+    //
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmojiCell", for: indexPath)
         if let emojiCell = cell as? EmojiCollectionViewCell {
