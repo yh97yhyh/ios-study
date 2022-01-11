@@ -31,8 +31,8 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         initTapImageView()
+        imagePicker.allowsEditing = true
 
-        // Do any additional setup after loading the view.
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -40,8 +40,10 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let originalImage: UIImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            imageView.image = originalImage
+        if let image: UIImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            imageView.image = image
+        } else if let image: UIImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            imageView.image = image
         }
         
         self.dismiss(animated: true, completion: nil)
