@@ -12,7 +12,7 @@ class ImageZoomViewController: UIViewController, UIScrollViewDelegate {
     
     var asset: PHAsset!
     let imageManager = PHCachingImageManager()
-    
+     
     @IBOutlet weak var imageView: UIImageView!
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {

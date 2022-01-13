@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "690A0C50-36A7-428F-A64E-DDF3C1D2B544"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D01EC8FE-127B-4EAF-91CC-01B696288976"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FriendsCollection/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "D01EC8FE-127B-4EAF-91CC-01B696288976 - b459751ca829fc80"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FriendsCollection.ViewController.numberOfCell.getter : Swift.Int"
+                  moduleName = "FriendsCollection"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mz01-kyongh/Desktop/Studuy/iOS/iOSAppStudy/BoostCourseiOS/FriendsCollection/FriendsCollection/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "D01EC8FE-127B-4EAF-91CC-01B696288976 - 46990a1cdb6844b8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FriendsCollection.ViewController.numberOfCell.setter : Swift.Int"
+                  moduleName = "FriendsCollection"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mz01-kyongh/Desktop/Studuy/iOS/iOSAppStudy/BoostCourseiOS/FriendsCollection/FriendsCollection/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  uuid = "D01EC8FE-127B-4EAF-91CC-01B696288976 - 2249c8e6f523ac0a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FriendsCollection.ViewController.numberOfCell.modify : Swift.Int"
+                  moduleName = "FriendsCollection"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mz01-kyongh/Desktop/Studuy/iOS/iOSAppStudy/BoostCourseiOS/FriendsCollection/FriendsCollection/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "D01EC8FE-127B-4EAF-91CC-01B696288976 - 64850e99ef9dd822"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FriendsCollection.ViewController.numberOfCell.modify : Swift.Int with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "FriendsCollection"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mz01-kyongh/Desktop/Studuy/iOS/iOSAppStudy/BoostCourseiOS/FriendsCollection/FriendsCollection/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "D01EC8FE-127B-4EAF-91CC-01B696288976 - 79d46a249583ece0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FriendsCollection.ViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; FriendsCollection.ViewController"
+                  moduleName = "FriendsCollection"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mz01-kyongh/Desktop/Studuy/iOS/iOSAppStudy/BoostCourseiOS/FriendsCollection/FriendsCollection/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "D01EC8FE-127B-4EAF-91CC-01B696288976 - 57173528981dd3c1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FriendsCollection.ViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;FriendsCollection.ViewController&gt;"
+                  moduleName = "FriendsCollection"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mz01-kyongh/Desktop/Studuy/iOS/iOSAppStudy/BoostCourseiOS/FriendsCollection/FriendsCollection/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

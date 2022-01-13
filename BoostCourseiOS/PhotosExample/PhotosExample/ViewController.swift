@@ -14,6 +14,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var fetchResult: PHFetchResult<PHAsset>!
     let imageManager = PHCachingImageManager()
     let callIdentifier = "cell"
+    
+    @IBAction func touchUpRefreshButton(_ sender: UIBarButtonItem) {
+        self.tableView.reloadSections(IndexSet(0...0), with: .automatic)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
