@@ -18,9 +18,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let imageWidth = UIScreen.main.bounds.width / 2.0 - 20
     
     let imageManager = PHCachingImageManager()
-    var photosOfAlbum: [PHFetchResult<PHAsset>] = []
-    var albumNames: [String] = []
-    var photoNums: [Int] = []
+    // var UserPhotos.shared.albums: [PHFetchResult<PHAsset>] = []
+    // var UserPhotos.shared.albumNames: [String] = []
+    // var UserPhotos.shared.photoNums: [Int] = []
+    
+    var albumIndex: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         initAuthorization()
         initFlowLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // initAuthorization()
     }
     
     private func initFlowLayout() {
@@ -91,9 +97,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         
-        photosOfAlbum.append(PHAsset.fetchAssets(in: cameraRollCollection, options: fetchOptions))
-        albumNames.append("Camera Roll")
-        photoNums.append(photosOfAlbum[0].count)
+        UserPhotos.shared.albums.append(PHAsset.fetchAssets(in: cameraRollCollection, options: fetchOptions))
+        UserPhotos.shared.albumNames.append("Camera Roll")
+        UserPhotos.shared.photoNums.append(UserPhotos.shared.albums[0].count)
 
         
         let options = PHFetchOptions()
@@ -105,24 +111,24 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let album = albumList.objects(at: IndexSet(0..<albumNums))
         
         for i in 0..<albumNums {
-            photosOfAlbum.append(PHAsset.fetchAssets(in: album[i], options: fetchOptions))
+            UserPhotos.shared.albums.append(PHAsset.fetchAssets(in: album[i], options: fetchOptions))
             guard let albumName = album[i].localizedTitle else {
                 return
             }
-            if photosOfAlbum[i+1].count == 0 {
-                photosOfAlbum.popLast()
+            if UserPhotos.shared.albums[i+1].count == 0 {
+                UserPhotos.shared.albums.popLast()
                 continue
             }
-            albumNames.append(albumName)
-            photoNums.append(photosOfAlbum[i+1].count)
-            // print("ㅅㅂ \(albumName) : \(photosOfAlbum[i+1].count)")
+            UserPhotos.shared.albumNames.append(albumName)
+            UserPhotos.shared.photoNums.append(UserPhotos.shared.albums[i+1].count)
+            // print("ㅅㅂ \(albumName) : \(UserPhotos.shared.albums[i+1].count)")
         }
     }
 
     // MARK: - UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photosOfAlbum.count
+        return UserPhotos.shared.albums.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -130,7 +136,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             return UICollectionViewCell()
         }
 
-        let photo = photosOfAlbum[indexPath.row][0]
+        let photo = UserPhotos.shared.albums[indexPath.row][0]
 
         let options = PHImageRequestOptions()
         options.resizeMode = .exact
@@ -141,10 +147,31 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                                      options: options) { (image, _) in
             cell.imageView.image = image
         }
-        cell.albumNameLabel.text = albumNames[indexPath.row]
-        cell.photeNum.text = String(photoNums[indexPath.row])
+        cell.albumNameLabel.text = UserPhotos.shared.albumNames[indexPath.row]
+        cell.photeNum.text = String(UserPhotos.shared.photoNums[indexPath.row])
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? AlbumCollectionViewCell else {
+            return
+        }
+        
+        albumIndex = indexPath.row
+        
+        performSegue(withIdentifier: "startToPhotosViewController", sender: cell)
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let photosViewController = segue.destination as? PhotosViewController else {
+            return
+        }
+        
+        photosViewController.albumIndex = albumIndex
     }
 
 }
