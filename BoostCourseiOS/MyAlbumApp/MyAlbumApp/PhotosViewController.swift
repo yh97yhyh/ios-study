@@ -13,29 +13,35 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet weak var collectionView: UICollectionView!
     let cellIdentifier = "photoCell"
     let flowLayout = UICollectionViewFlowLayout()
-    let halfWidth = UIScreen.main.bounds.width / 3.3
-    let imageWidth = UIScreen.main.bounds.width / 3.3 - 5
+    let halfWidth = UIScreen.main.bounds.width / 3.3333
+    let imageSize = UIScreen.main.bounds.width / 3.3333
     
     let imageManager = PHCachingImageManager()
     var albumIndex: Int!
     
     var photoIndex: Int!
     
+    var shareImages: [UIImage] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-
+        
         initFlowLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.title = UserPhotos.shared.albumNames[albumIndex]
     }
     
     private func initFlowLayout() {
         flowLayout.sectionInset = UIEdgeInsets.zero
-        flowLayout.minimumLineSpacing = 10
-        flowLayout.minimumInteritemSpacing = 10
+        flowLayout.minimumLineSpacing = 3
+        flowLayout.minimumInteritemSpacing = 1
         
-        flowLayout.itemSize = CGSize(width: imageWidth, height: halfWidth)
+        flowLayout.itemSize = CGSize(width: imageSize, height: imageSize)
         
         self.collectionView.collectionViewLayout = flowLayout
     }
@@ -87,8 +93,6 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         imageViewController.photoIndex = photoIndex
         imageViewController.albumIndex = albumIndex
-        
-        
     }
 
 

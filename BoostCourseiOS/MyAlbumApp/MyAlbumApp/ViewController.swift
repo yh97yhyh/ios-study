@@ -8,14 +8,13 @@
 import UIKit
 import Photos
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, PHPhotoLibraryChangeObserver {
 
     @IBOutlet weak var collectionView: UICollectionView!
     let cellIdentifier = "albumCell"
     let flowLayout = UICollectionViewFlowLayout()
     let halfWidth = UIScreen.main.bounds.width / 2.0
-    let imageWidth = UIScreen.main.bounds.width / 2.0 - 20
+    let imageSize = UIScreen.main.bounds.width / 2.0 - 15
     
     let imageManager = PHCachingImageManager()
     // var UserPhotos.shared.albums: [PHFetchResult<PHAsset>] = []
@@ -31,20 +30,25 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
+        self.navigationItem.title = "앨범"
+        
         initAuthorization()
         initFlowLayout()
+        
+        print("1")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         // initAuthorization()
+        print(".")
     }
     
     private func initFlowLayout() {
         flowLayout.sectionInset = UIEdgeInsets.zero
-        flowLayout.minimumLineSpacing = 10
-        flowLayout.minimumInteritemSpacing = 10
+        flowLayout.minimumLineSpacing = 6
+        flowLayout.minimumInteritemSpacing = 3
         
-        flowLayout.itemSize = CGSize(width: imageWidth, height: halfWidth)
+        flowLayout.itemSize = CGSize(width: imageSize, height: halfWidth)
         
         self.collectionView.collectionViewLayout = flowLayout
     }
@@ -122,6 +126,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             UserPhotos.shared.albumNames.append(albumName)
             UserPhotos.shared.photoNums.append(UserPhotos.shared.albums[i+1].count)
             // print("ㅅㅂ \(albumName) : \(UserPhotos.shared.albums[i+1].count)")
+        }
+    }
+    
+    func photoLibraryDidChange(_ changeInstance: PHChange) {
+        guard let changes = changeInstance.changeDetails(for: UserPhotos.shared.albums[0]) else {
+            return
+        }
+        
+        OperationQueue.main.addOperation {
+            // self.tableView.reloadSections(IndexSet(0...0), with: .automatic)
+            self.collectionView.reloadData()
         }
     }
 

@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Title-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MyAlbumApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -80,7 +80,7 @@
                             <constraint firstItem="8kt-jN-gT1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="xxV-JF-vry"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="lmH-xN-l0m"/>
+                    <navigationItem key="navigationItem" title="Title" id="92T-gu-eqj"/>
                     <connections>
                         <outlet property="collectionView" destination="8kt-jN-gT1" id="jqr-Bd-pCf"/>
                         <segue destination="2XC-uH-A8D" kind="show" identifier="startToPhotosViewController" id="Efw-4h-JjX"/>
@@ -90,7 +90,7 @@
             </objects>
             <point key="canvasLocation" x="889.85507246376824" y="115.84821428571428"/>
         </scene>
-        <!--Photos View Controller-->
+        <!--Title-->
         <scene sceneID="7VV-K5-cX5">
             <objects>
                 <viewController id="2XC-uH-A8D" customClass="PhotosViewController" customModule="MyAlbumApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -132,6 +132,15 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ozl-jL-xmb">
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem image="square.and.arrow.up" catalog="system" width="42" style="plain" id="25L-bU-cuY"/>
+                                    <barButtonItem title="최신순" width="42" style="plain" id="CSN-Rz-AtZ"/>
+                                    <barButtonItem image="trash" catalog="system" width="42" style="plain" id="F4K-fb-sEc"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8qC-ow-ZFC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -142,7 +151,9 @@
                             <constraint firstItem="8qC-ow-ZFC" firstAttribute="trailing" secondItem="7jH-AC-0d0" secondAttribute="trailing" id="w57-e6-SSc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="H5S-mx-Yix"/>
+                    <navigationItem key="navigationItem" title="Title" id="30k-UK-tQI">
+                        <barButtonItem key="rightBarButtonItem" title="선택" id="QwA-Cz-5xk"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="7jH-AC-0d0" id="wFk-9h-pZD"/>
                         <segue destination="jL7-Je-hgV" kind="show" identifier="startToImageViewController" id="wGr-CF-yUk"/>
@@ -155,6 +166,7 @@
         <!--Image View Controller-->
         <scene sceneID="jul-oq-JxZ">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FWT-jZ-Hns" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="jL7-Je-hgV" customClass="ImageViewController" customModule="MyAlbumApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ozb-l5-lJg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -164,32 +176,59 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="agp-GT-rU9">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="agp-GT-rU9">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="icj-HC-mfK">
+                                        <rect key="frame" x="0.0" y="730" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <items>
+                                            <barButtonItem image="square.and.arrow.up" catalog="system" width="42" style="plain" id="v3N-EV-MWm">
+                                                <connections>
+                                                    <action selector="didClickShareButton:" destination="jL7-Je-hgV" id="1wL-8i-83U"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="🤍" width="42" style="plain" id="SZL-Va-bwD"/>
+                                            <barButtonItem image="trash" catalog="system" width="42" style="plain" id="Lbb-O5-Pdb"/>
+                                        </items>
+                                    </toolbar>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="SxF-VM-rFQ" firstAttribute="bottom" secondItem="agp-GT-rU9" secondAttribute="bottom" id="CNX-cg-W5V"/>
-                                    <constraint firstItem="agp-GT-rU9" firstAttribute="top" secondItem="SxF-VM-rFQ" secondAttribute="top" id="Xoi-SS-hQr"/>
-                                    <constraint firstItem="SxF-VM-rFQ" firstAttribute="trailing" secondItem="agp-GT-rU9" secondAttribute="trailing" id="nKf-vZ-ki4"/>
-                                    <constraint firstItem="agp-GT-rU9" firstAttribute="leading" secondItem="SxF-VM-rFQ" secondAttribute="leading" id="vLi-yz-XOe"/>
-                                </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="LuK-FU-mHN"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="SxF-VM-rFQ"/>
                                 <connections>
                                     <outlet property="delegate" destination="jL7-Je-hgV" id="r4f-2g-Zoj"/>
                                 </connections>
                             </scrollView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gWj-Y1-rDb">
+                                <rect key="frame" x="185" y="43" width="44.5" height="36.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9w-RH-EEj">
+                                        <rect key="frame" x="0.0" y="0.0" width="44.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AdE-7s-PJD">
+                                        <rect key="frame" x="0.0" y="20.5" width="44.5" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" systemColor="systemGrayColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CfM-uI-U1j"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="VYP-nM-VeU"/>
                     <connections>
+                        <outlet property="datelabel" destination="n9w-RH-EEj" id="w54-7T-kRH"/>
                         <outlet property="imageView" destination="agp-GT-rU9" id="Cw7-NA-cch"/>
+                        <outlet property="timeLabel" destination="AdE-7s-PJD" id="TjZ-f2-nJQ"/>
+                        <outlet property="titleStackView" destination="gWj-Y1-rDb" id="FO2-mm-5cb"/>
+                        <outlet property="toolbar" destination="icj-HC-mfK" id="Kjb-2f-8hS"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FWT-jZ-Hns" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2471.0144927536235" y="115.84821428571428"/>
         </scene>
@@ -213,8 +252,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

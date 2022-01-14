@@ -11,12 +11,32 @@ import Photos
 class ImageViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var datelabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var titleStackView: UIStackView!
+    @IBOutlet weak var toolbar: UIToolbar!
     
     var albumIndex: Int!
     var photoIndex: Int!
     
     let imageManager = PHCachingImageManager()
-    var image: UIImage!
+    var photo: PHAsset!
+    
+    var shareImage: UIImage!
+    
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+    
+    let timeFormatter: DateFormatter = {
+       let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.dateFormat = "a hh:mm:ss"
+        return formatter
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +46,33 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {        
         initImage()
+        initTitleView()
+        initToolbar()
     }
     
+    private func initTitleView() {
+        guard let date = photo.creationDate else {
+            return
+        }
+        
+        datelabel.text = dateFormatter.string(from: date)
+        timeLabel.text = timeFormatter.string(from: date)
+        self.navigationItem.titleView = titleStackView
+    }
+    
+    private func initToolbar() {
+        guard let items = toolbar.items else {
+            return
+        }
+        
+        if photo.isFavorite {
+            items[1].title = "❤️"
+        }
+    }
+     
     private func initImage() {
         
-        let photo = UserPhotos.shared.albums[albumIndex][photoIndex]
+        photo = UserPhotos.shared.albums[albumIndex][photoIndex]
         
         let options = PHImageRequestOptions()
         options.resizeMode = .exact
@@ -39,11 +81,30 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
                                      targetSize: CGSize(width: photo.pixelWidth , height: photo.pixelHeight),
                                      contentMode: .aspectFill,
                                      options: options) { (image, _) in
+            self.shareImage = image
             self.imageView.image = image
         }
     }
     
+    // MARK: - ToolbarButton
+    
+    @IBAction func didClickShareButton(_ sender: UIBarButtonItem) {
+        guard let shareImage = shareImage else {
+            return
+        }
+        
+        var shareObjects: [Any] = []
+        
+        shareObjects.append(shareImage)
+        
+        let activitViewController = UIActivityViewController(activityItems: shareObjects, applicationActivities: nil)
+        activitViewController.popoverPresentationController?.sourceView = self.view
+        
+        self.present(activitViewController, animated: true, completion: nil)
+    }
+    
     // MARK: - UIScrollView
+    
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
