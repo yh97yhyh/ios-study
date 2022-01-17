@@ -136,9 +136,17 @@
                                 <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem image="square.and.arrow.up" catalog="system" width="42" style="plain" id="25L-bU-cuY"/>
+                                    <barButtonItem enabled="NO" image="square.and.arrow.up" catalog="system" width="42" style="plain" id="25L-bU-cuY">
+                                        <connections>
+                                            <action selector="didClickShareButton:" destination="2XC-uH-A8D" id="hf8-gr-ZZy"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="최신순" width="42" style="plain" id="CSN-Rz-AtZ"/>
-                                    <barButtonItem image="trash" catalog="system" width="42" style="plain" id="F4K-fb-sEc"/>
+                                    <barButtonItem enabled="NO" image="trash" catalog="system" width="42" style="plain" id="F4K-fb-sEc">
+                                        <connections>
+                                            <action selector="didClickDeleteButton:" destination="2XC-uH-A8D" id="CD5-CK-xJ6"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -152,10 +160,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="30k-UK-tQI">
-                        <barButtonItem key="rightBarButtonItem" title="선택" id="QwA-Cz-5xk"/>
+                        <barButtonItem key="rightBarButtonItem" title="선택" id="QwA-Cz-5xk">
+                            <connections>
+                                <action selector="didClickSelectButton:" destination="2XC-uH-A8D" id="rbd-ut-vDk"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="7jH-AC-0d0" id="wFk-9h-pZD"/>
+                        <outlet property="selectButton" destination="QwA-Cz-5xk" id="eDF-gE-WNO"/>
+                        <outlet property="toolbar" destination="ozl-jL-xmb" id="riZ-Ti-JSz"/>
                         <segue destination="jL7-Je-hgV" kind="show" identifier="startToImageViewController" id="wGr-CF-yUk"/>
                     </connections>
                 </viewController>
@@ -166,7 +180,6 @@
         <!--Image View Controller-->
         <scene sceneID="jul-oq-JxZ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FWT-jZ-Hns" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="jL7-Je-hgV" customClass="ImageViewController" customModule="MyAlbumApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ozb-l5-lJg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -190,7 +203,11 @@
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem title="🤍" width="42" style="plain" id="SZL-Va-bwD"/>
-                                            <barButtonItem image="trash" catalog="system" width="42" style="plain" id="Lbb-O5-Pdb"/>
+                                            <barButtonItem image="trash" catalog="system" width="42" style="plain" id="Lbb-O5-Pdb">
+                                                <connections>
+                                                    <action selector="didClickDeleteButton:" destination="jL7-Je-hgV" id="Ean-VA-bfX"/>
+                                                </connections>
+                                            </barButtonItem>
                                         </items>
                                     </toolbar>
                                 </subviews>
@@ -229,6 +246,7 @@
                         <outlet property="toolbar" destination="icj-HC-mfK" id="Kjb-2f-8hS"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FWT-jZ-Hns" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2471.0144927536235" y="115.84821428571428"/>
         </scene>

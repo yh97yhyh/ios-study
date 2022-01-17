@@ -27,6 +27,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        registerPhotoLibrary()
+        
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
@@ -34,13 +36,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         initAuthorization()
         initFlowLayout()
-        
-        print("1")
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        // initAuthorization()
-        print(".")
+        OperationQueue.main.addOperation {
+            self.collectionView.reloadData()
+        }
     }
     
     private func initFlowLayout() {
@@ -63,7 +64,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 switch status {
                 case .authorized:
                     print("사용자 허용함")
-                    self.requestCollection()
+                    UserPhotos.shared.requestCollection()
                     OperationQueue.main.addOperation {
                         self.collectionView.reloadData()
                     }
@@ -79,8 +80,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             print("접근 불허")
         case .authorized:
             print("접근 허가")
-            self.requestCollection()
-            self.collectionView.reloadData()
+            UserPhotos.shared.requestCollection()
+            OperationQueue.main.addOperation {
+                self.collectionView.reloadData()
+            }
         case .limited:
             print("limited")
         }
@@ -88,54 +91,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     // MARK: - Photos
     
-    private func requestCollection() {
-
-        let cameraRoll = PHAssetCollection.fetchAssetCollections(with: .smartAlbum,
-                                                                 subtype: .smartAlbumUserLibrary,
-                                                                 options: nil)
-        
-        guard let cameraRollCollection = cameraRoll.firstObject else {
-            return
-        }
-        
-        let fetchOptions = PHFetchOptions()
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        
-        UserPhotos.shared.albums.append(PHAsset.fetchAssets(in: cameraRollCollection, options: fetchOptions))
-        UserPhotos.shared.albumNames.append("Camera Roll")
-        UserPhotos.shared.photoNums.append(UserPhotos.shared.albums[0].count)
-
-        
-        let options = PHFetchOptions()
-        options.sortDescriptors = [NSSortDescriptor(key: "localizedTitle", ascending: false)]
-        let albumList = PHAssetCollection.fetchAssetCollections(with: .album,
-                                                                subtype: .any,
-                                                                options: options)
-        let albumNums = albumList.count
-        let album = albumList.objects(at: IndexSet(0..<albumNums))
-        
-        for i in 0..<albumNums {
-            UserPhotos.shared.albums.append(PHAsset.fetchAssets(in: album[i], options: fetchOptions))
-            guard let albumName = album[i].localizedTitle else {
-                return
-            }
-            if UserPhotos.shared.albums[i+1].count == 0 {
-                UserPhotos.shared.albums.popLast()
-                continue
-            }
-            UserPhotos.shared.albumNames.append(albumName)
-            UserPhotos.shared.photoNums.append(UserPhotos.shared.albums[i+1].count)
-            // print("ㅅㅂ \(albumName) : \(UserPhotos.shared.albums[i+1].count)")
-        }
+    func registerPhotoLibrary() {
+        PHPhotoLibrary.shared().register(self)
     }
     
     func photoLibraryDidChange(_ changeInstance: PHChange) {
-        guard let changes = changeInstance.changeDetails(for: UserPhotos.shared.albums[0]) else {
+        guard let changedCameraRoll = changeInstance.changeDetails(for: UserPhotos.shared.albums[0]) else {
             return
         }
         
+        guard let changedAlbum = changeInstance.changeDetails(for: UserPhotos.shared.albums[albumIndex]) else {
+            return
+        }
+
+        UserPhotos.shared.setChanges(changedCameraRoll: changedCameraRoll, changedAlbum: changedAlbum, albumIndex: albumIndex)
+        
         OperationQueue.main.addOperation {
-            // self.tableView.reloadSections(IndexSet(0...0), with: .automatic)
             self.collectionView.reloadData()
         }
     }

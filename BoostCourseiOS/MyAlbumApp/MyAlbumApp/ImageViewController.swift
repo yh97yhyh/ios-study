@@ -8,7 +8,7 @@
 import UIKit
 import Photos
 
-class ImageViewController: UIViewController, UIScrollViewDelegate {
+class ImageViewController: UIViewController, UIScrollViewDelegate, PHPhotoLibraryChangeObserver {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var datelabel: UILabel!
@@ -42,6 +42,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        registerPhotoLibrary()
     }
     
     override func viewWillAppear(_ animated: Bool) {        
@@ -86,6 +87,29 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    // MARK: - Photos
+    
+    func registerPhotoLibrary() {
+        PHPhotoLibrary.shared().register(self)
+    }
+    
+    func photoLibraryDidChange(_ changeInstance: PHChange) {
+        DispatchQueue.main.async {
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        guard let changedCameraRoll = changeInstance.changeDetails(for: UserPhotos.shared.albums[0]) else {
+            return
+        }
+        
+        guard let changedAlbum = changeInstance.changeDetails(for: UserPhotos.shared.albums[albumIndex]) else {
+            return
+        }
+        
+        UserPhotos.shared.setChanges(changedCameraRoll: changedCameraRoll, changedAlbum: changedAlbum, albumIndex: albumIndex)
+        
+    }
+    
     // MARK: - ToolbarButton
     
     @IBAction func didClickShareButton(_ sender: UIBarButtonItem) {
@@ -102,6 +126,13 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
         
         self.present(activitViewController, animated: true, completion: nil)
     }
+    
+    @IBAction func didClickDeleteButton(_ sender: UIBarButtonItem) {
+        PHPhotoLibrary.shared().performChanges({
+            PHAssetChangeRequest.deleteAssets([self.photo] as NSArray)
+        }, completionHandler: nil)
+    }
+    
     
     // MARK: - UIScrollView
     
