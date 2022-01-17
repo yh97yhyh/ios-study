@@ -23,7 +23,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate, PHPhotoLibrar
     var photo: PHAsset!
     
     var shareImage: UIImage!
-    
+
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -107,6 +107,12 @@ class ImageViewController: UIViewController, UIScrollViewDelegate, PHPhotoLibrar
         }
         
         UserPhotos.shared.setChanges(changedCameraRoll: changedCameraRoll, changedAlbum: changedAlbum, albumIndex: albumIndex)
+        
+//        if !changedCameraRoll.removedObjects.isEmpty {
+//            DispatchQueue.main.async {
+//                self.navigationController?.popViewController(animated: true)
+//            }
+//        }
         
     }
     
