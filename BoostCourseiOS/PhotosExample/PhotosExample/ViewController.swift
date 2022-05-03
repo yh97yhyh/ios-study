@@ -57,7 +57,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case .authorized:
             print("접근 허가")
             self.requestCollection()
-            self.tableView.reloadData()
+            OperationQueue.main.addOperation {
+                self.tableView.reloadData()
+            }
         case .limited:
             print("limited")
         }

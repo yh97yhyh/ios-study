@@ -53,7 +53,6 @@ class UserPhotos {
             }
             UserPhotos.shared.albumNames.append(albumName)
             UserPhotos.shared.photoNums.append(UserPhotos.shared.albums[i+1].count)
-            // print("ㅅㅂ \(albumName) : \(UserPhotos.shared.albums[i+1].count)")
         }
     }
     
