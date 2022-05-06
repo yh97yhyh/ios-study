@@ -12,6 +12,7 @@ class Service { // Logic
     
     var currentModel = Model(currentDateTime: Date())
     
+    // Entity -> Model
     func fetchNow(onCompleted: @escaping (Model) -> Void) {
         repository.fetchNow { [weak self] entity in
             guard let self = self else { return }

@@ -11,7 +11,7 @@ class ViewModel {
     
     var onUpdated: () -> Void = {}
     
-    // 화면에 보여지는 값 (ViewModel)
+    // ViewModel
     var dateTimeString: String = "Loading..." {
         didSet {
             onUpdated()
@@ -27,6 +27,7 @@ class ViewModel {
     }
     
     func reload() {
+        // Model -> ViewModel
         service.fetchNow { [weak self] model in
             guard let self = self else { return }
             let dateString = self.dateToString(date: model.currentDateTime)
