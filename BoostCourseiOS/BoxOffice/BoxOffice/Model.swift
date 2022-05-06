@@ -21,18 +21,18 @@ struct Movie: Codable {
     let userRating: Double
     let rservationGrade: Int
     let reservationRate: Double
-    var detail: String {
-        return ("평점 : \(userRating) 예매순위 : \(rservationGrade) 예매율 : \(reservationRate)")
-    }
-    
     let thumb: String
     let title: String
     let grade: Int
     let date: String
+    let id: String
+    
+    var detail: String {
+        return ("평점 : \(userRating) 예매순위 : \(rservationGrade) 예매율 : \(reservationRate)")
+    }
     var dateText: String {
         return("개봉일 \(date)")
     }
-    let id: String
     
     enum CodingKeys: String, CodingKey {
         case thumb, title, grade, date, id
@@ -73,6 +73,11 @@ struct APIResponseComments: Codable {
 struct Comment: Codable {
     let rating: Double
     let timestamp: Double
+    let writer: String
+    let movieId: String
+    let contents: String
+    let id: String
+    
     var date: Date {
         return Date(timeIntervalSince1970: timestamp)
     }
@@ -81,11 +86,6 @@ struct Comment: Codable {
         dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
         return dateFormatter.string(from: date)
     }
-    
-    let writer: String
-    let movieId: String
-    let contents: String
-    let id: String
     
     enum CodingKeys: String, CodingKey {
         case rating, timestamp, writer, contents, id
